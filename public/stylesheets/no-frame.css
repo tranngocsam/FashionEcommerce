@@ -1,0 +1,40 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+body#no_frame {
+	background: url("http://gretashop.com/img/bg.jpg") repeat-x scroll 0 0 #FEF2ED;
+}
+
+#background {
+  background: url("http://gretashop.com/img/image-shot.jpg") no-repeat scroll center top transparent;
+	display: table;
+	width: 100%;
+	height: 709px;
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 960px;
+	background: none;
+}
+
+#content {
+  margin-top: 620px;
+}
+
+a {
+  text-decoration: none;
+}
+
+#nav ul {
+  list-style: none;
+  font-size: 26px;
+  text-align: center;
+}
+
+#nav li {
+	display: inline;
+	margin: 0 10px;
+}
