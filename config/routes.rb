@@ -1,6 +1,11 @@
 Ecommerce::Application.routes.draw do
 	match "home/index" => "home#index", :as => :homepage
-	root :to => :homepage
+
+	namespace :admin do
+		resources :videos
+	end
+
+	#root :to => :homepage
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

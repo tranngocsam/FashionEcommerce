@@ -1,0 +1,30 @@
+<script type="text/javascript" src="/javascripts/jwplayer/jwplayer.js"></script>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Video content type:</b>
+  <%= @video.movie_content_type %>
+</p>
+
+<p>
+  <b>Video file name:</b>
+  <%= @video.movie_file_name %>
+</p>
+
+<p>
+  <b>Video file size:</b>
+  <%= @video.movie_file_size %>
+</p>
+
+<div id="playing">Loading...</div>
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+	  jwplayer("playing").setup({
+  	  flashplayer: "/javascripts/jwplayer/player.swf",
+    	file: "/system/movies/<%= @video.id %>/original/<%= @video.movie_file_name %>"
+  	});
+	});
+</script>
+
+<%= link_to 'Edit', edit_admin_video_path(@video) %> |
+<%= link_to 'Back', admin_videos_path %>

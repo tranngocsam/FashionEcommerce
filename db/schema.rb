@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110314192118) do
+ActiveRecord::Schema.define(:version => 20110620121244) do
 
   create_table "addresses", :force => true do |t|
     t.string   "firstname"
@@ -552,6 +552,15 @@ ActiveRecord::Schema.define(:version => 20110314192118) do
   end
 
   add_index "variants", ["product_id"], :name => "index_variants_on_product_id"
+
+  create_table "videos", :force => true do |t|
+    t.string   "movie_content_type"
+    t.datetime "movie_updated_at"
+    t.string   "movie_file_name"
+    t.integer  "movie_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "zone_members", :force => true do |t|
     t.integer  "zone_id"
