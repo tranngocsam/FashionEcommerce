@@ -4,11 +4,13 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 body#no_frame {
-	background: url("http://gretashop.com/img/bg.jpg") repeat-x scroll 0 0 #FEF2ED;
+	background: #E6E6E6;
+	margin: 0;
+	padding: 0;
 }
 
 #background {
-  background: url("http://gretashop.com/img/image-shot.jpg") no-repeat scroll center top transparent;
+  background: url("/images/homepage_bg.jpg") no-repeat scroll center top transparent;
 	display: table;
 	width: 100%;
 	height: 709px;
@@ -16,12 +18,13 @@ body#no_frame {
 
 #wrapper {
 	margin: 0 auto;
-	width: 960px;
 	background: none;
 }
 
 #content {
-  margin-top: 620px;
+  margin-top: 360px;
+	margin-left: 480px;
+	text-transform: uppercase;
 }
 
 a {
@@ -30,11 +33,28 @@ a {
 
 #nav ul {
   list-style: none;
-  font-size: 26px;
+  font-size: 22px;
   text-align: center;
+	color: #22C1E1;
 }
 
 #nav li {
 	display: inline;
-	margin: 0 10px;
+	margin: 0;
+	padding: 0 15px 0 8px;
+	border-right: 2px solid #22C1E1;
+}
+
+#nav li.last {
+	border-right: none;
+}
+
+#nav li a {
+	color: #22C1E1;
+}
+
+#copyright {
+	margin-top: 200px;
+	text-align: right;
+	padding-right: 50px;
 }
