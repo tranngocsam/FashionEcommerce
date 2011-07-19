@@ -1,0 +1,37 @@
+<div id="to_apply", class="fl">
+	<% if flash[:alert] %>
+  	<div class="flash errors"><%= flash[:alert] %></div>
+	<% end %>
+
+	<% @body_id = 'login' %>
+	<div id="existing-customer">
+  	<h2><%= t("to_apply") %></h2>
+	  <%= hook :login do %>
+  	  <%= render :partial => 'shared/login' %>
+    	<!-- <%= t("or") %> <%= link_to t("create_a_new_account"), signup_path %> | <%= link_to t("forgot_password"), new_user_password_path %> -->
+	  <% end %>
+	</div>
+	<%= hook :login_extras %>
+</div>
+<div id="to_registration" id="fr">
+	<%= render "shared/error_messages", :target => @user %>
+
+	<div id="new-customer">
+	  <h2><%= t("new_customer") %></h2>
+
+	  <%= hook :signup do %>
+
+	  	<%= form_for(:user, :url => registration_path(@user)) do |f| %>
+
+	  		<%= hook :signup_inside_form do %>
+			  	<%= render 'shared/user_form', :f => f %>
+		  		<p><%= submit_tag t("create"), :class => 'button primary' %></p>
+			  <% end %>
+
+			<% end %>
+	  	<%= t("or") %> <%= link_to t("login_as_existing"), login_path %>
+	  <% end %>
+
+	</div>
+	<%= hook :login_extras %>
+</div>
