@@ -1,2 +1,5 @@
 en:
   to_apply: "To apply"
+  devise:
+    failure:
+      not_approved: "Your account has not been approved by your administrator yet."

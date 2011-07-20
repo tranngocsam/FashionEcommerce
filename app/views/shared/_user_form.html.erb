@@ -1,17 +1,47 @@
-<p>
-  <%= f.label :email, t("email") %><br />
-  <%= f.text_field :email, :class => 'title'  %>
-</p>
-<div id="password-credentials">
-  <p>
-    <%= f.label :password, t("password") %><br />
-    <%= f.password_field :password, :class => 'title'  %>
-  </p>
-
-  <p>
-    <%= f.label :password_confirmation, t(:confirm_password) %><br />
-    <%= f.password_field :password_confirmation, :class => 'title' %>
-  </p>
+<div class="form-input">
+	<div class="label fl">
+		<%= f.label :name %>
+	</div>
+	<div class="input-control fr">
+		<%= f.text_field :name, :class => 'title'  %>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="form-input">
+  <div class="label fl">
+    <%= f.label :company %>
+  </div>
+	<div class="input-control fr">
+	  <%= f.text_field :company, :class => 'title'  %>  
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="form-input">
+  <div class="label fl">
+    <%= f.label :country %>
+  </div>
+  <div class="input-control">
+		<%= f.text_field :country, :class => 'title'  %>
+  </div>
+	<div class="clear"></div>
+</div>
+<div class="form-input">
+  <div class="label fl">
+    <%= f.label :website %>
+  </div>
+  <div class="input-control fr">
+	  <%= f.text_field :website, :class => 'title'  %>  
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="form-input">
+	<div class="label fl">
+	  <%= f.label :email, t("email") %><br />
+	</div>
+	<div class="input-control fr">
+	  <%= f.text_field :email, :class => 'title'  %>
+	</div>
+	<div class="clear"></div>
 </div>
 
 <%= hook :signup_below_password_fields %>

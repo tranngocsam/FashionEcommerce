@@ -1,17 +1,23 @@
 <%= form_for(:user, :url => user_session_path) do |f| %>
   <div id='password-credentials'>
-    <p>
-      <%= f.label(:email, t("email")) %>
-			<div class="input">
+    <div class="form-input">
+			<div class="label fl">
+	      <%= f.label(:email, t("email")) %>
+			</div>
+			<div class="input-control fr">
 	      <%= f.text_field('email', :class => 'title') %>
 			</div>
-    </p>
-    <p>
-      <%= f.label :password, t("password") %>
-			<div class="input">
+			<div class="clear"></div>
+    </div>
+    <div class="form-input">
+			<div class="label fl">
+	      <%= f.label :password, t("password") %>
+			</div>
+			<div class="input-control fr">
 	      <%= f.password_field 'password', :class => 'title' %>
 			</div>
-    </p>
+			<div class="clear"></div>
+    </div>
   </div>
   <p>
     <!--label>
@@ -20,5 +26,5 @@
     </label-->
   </p>
 
-  <p><%= submit_tag t("log_in"), :class => 'button primary'%></p>
+  <div class="submit"><%= submit_tag t("log_in"), :class => 'button primary'%></div>
 <% end %>
