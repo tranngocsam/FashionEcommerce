@@ -7,11 +7,11 @@
 </head>
 <%
 if @body_class.nil?
-  if content_for?(:sidebar)
-    @body_class = 'two-col'
-  else
+  #if content_for?(:sidebar)
+  #  @body_class = 'two-col'
+  #else
     @body_class = 'one-col'
-  end
+  #end
 end
  %>
 <body class="<%= @body_class %>" id="<%= @body_id %>">
@@ -19,7 +19,7 @@ end
   <div id="header" class="container_bg">
     <div class="container">
     <div id="login-bar">
-      <ul id="nav-bar">
+      <ul id="nav" class="dropdown dropdown-horizontal">
         <%= render 'shared/nav_bar' %>
       </ul>
     </div>
@@ -30,6 +30,7 @@ end
 		<!--%= render "shared/minor_nav" %-->
 	</div>
   <div id="wrapper" class="container">
+		<!--
     <% if content_for?(:sidebar) %>
     <div id="sidebar">
       <%= hook :sidebar do %>
@@ -37,9 +38,10 @@ end
       <% end %>
     </div>
     <% end %>
+		-->
 
     <div id="content">
-      <%= breadcrumbs(@taxon) if @taxon %>
+      <!--%= breadcrumbs(@taxon) if @taxon %-->
       <% if flash.notice %>
       <div class="flash notice"><%= flash.notice %></div>
       <% end %>

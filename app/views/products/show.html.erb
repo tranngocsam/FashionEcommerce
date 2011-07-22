@@ -1,5 +1,9 @@
 <% @body_id = 'product-details' %>
-<h1><%= accurate_title %></h1>
+<!--h1><%= accurate_title %></h1-->
+
+ <% if !@product.taxons.blank? %>
+	<h1><%= @product.taxons.first.name + " " + @product.taxons.first.parent.name %></h1>
+ <% end %>
 
 <div id="product-images">
   <%= hook :product_images do %>
@@ -13,14 +17,40 @@
 </div>
 
 <div id="product-description">
+	<!--
   <%= hook :product_description do %>
     <%= product_description(@product) rescue t("product_has_no_description") %>
   <% end %>
+	-->
+	<h1><%= accurate_title %></h1>
   <%= hook :product_properties do %>
     <%= render 'properties' %>
   <% end %>
+	<div class="variant-images">
+		<ul class="thumbnails">
+			<%
+				variants = Variant.active.find_all_by_product_id(@product.id, :include => [:images])
+				variants.each do |variant|
+					if variant.images.size > 0
+						%>
+						<li><%= link_to(image_tag(variant.images.first.attachment.url(:mini)), variant.images.first.attachment.url(:product)) %></li>
+						<%
+					end
+				end
+			%>
+		</ul>
+	</div>
 </div>
 
+<div class="clear"></div>
+<div class="product-more-info">
+	<h4>More Info</h4>
+	<%= hook :product_description do %>
+		<%= product_description(@product) rescue t("product_has_no_description") %>
+	<% end %>
+</div>
+
+<!--
 <%= hook :cart_form do %>
   <div id="cart-form">
     <%= render 'cart_form' %>
@@ -28,4 +58,5 @@
 <% end %>
 
 <%= render 'taxons' %>
+-->
 

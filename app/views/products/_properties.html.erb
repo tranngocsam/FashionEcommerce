@@ -1,8 +1,26 @@
 <% unless @product_properties.empty? %>
 <dl id="product-properties" class="table-display">
 <% for product_property in @product_properties %>
-  <dt><%= product_property.property.presentation %></dt>
-  <dd><%= product_property.value %></dd>
+	<% if product_property.property.presentation.downcase == "season" %>
+	  <dt><%= product_property.property.presentation %></dt>
+  	<dd><%= product_property.value %></dd>
+	<% end %>
+<% end %>
+<% for product_property in @product_properties %>
+  <% if product_property.property.presentation.downcase == "delivery" %>
+    <dt><%= product_property.property.presentation %></dt>
+    <dd><%= product_property.value %></dd>
+  <% end %>
+<% end %>
+<% text = "" %>
+<% for product_property in @product_properties %>
+  <% if product_property.property.presentation.downcase == "shirt" || product_property.property.presentation.downcase == "pant" %>
+  	<% text += "<span>" + product_property.property.presentation + ": " + product_property.value + "</span>" %>
+  <% end %>
+<% end %>
+<% if text != "" %>
+  <dt><%= product_property.property.prototypes.first.name %></dt>
+  <dd><%= text.html_safe %></dd>
 <% end %>
 </dl>
 <% end %>
