@@ -36,3 +36,8 @@ h1 {
 .dropdown-upward {
  margin-top: 400px !important;
 }
+
+#header .container {
+	overflow: visible;
+}
+

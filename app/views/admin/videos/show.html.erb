@@ -1,30 +1,29 @@
 <script type="text/javascript" src="/javascripts/jwplayer/jwplayer.js"></script>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Video content type:</b>
-  <%= @video.movie_content_type %>
-</p>
-
-<p>
-  <b>Video file name:</b>
-  <%= @video.movie_file_name %>
-</p>
-
-<p>
-  <b>Video file size:</b>
-  <%= @video.movie_file_size %>
-</p>
-
-<div id="playing">Loading...</div>
-<script type="text/javascript">
-	jQuery(document).ready(function() {
-	  jwplayer("playing").setup({
-  	  flashplayer: "/javascripts/jwplayer/player.swf",
-    	file: "/system/movies/<%= @video.id %>/original/<%= @video.movie_file_name %>"
-  	});
-	});
-</script>
+<% host_url = "http://" + request.host_with_port %>
+<div class="latest-video">
+	<div class="video-big-thumbnail fl">
+		<object width="515" height="270"> 
+			<param name="movie" value="/javascripts/StrobeMediaPlayback/StrobeMediaPlayback.swf"></param>
+			<param name="flashvars" value="src=<%= CGI.escape(host_url + @video.movie.url) + "&poster=" + CGI.escape(host_url + @video.movie.url(:large)) %>"></param>
+			<param name="allowFullScreen" value="true"></param>
+			<param name="allowscriptaccess" value="always"></param>
+			<embed src="/javascripts/StrobeMediaPlayback/StrobeMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="515" height="270" flashvars="src=<%= CGI.escape(host_url + @video.movie.url) + "&poster=" + CGI.escape(host_url + @video.movie.url(:large)) %>"></embed>
+		</object>
+	</div>
+	<div class="video-details fl">
+		<h3><%= @video.name %></h3>
+		<ul>
+			<li><%= @video.created_at.strftime("%d %B %Y %I:%M %p") %></li>
+			<li class="last">Durations: <%= distance_of_time_in_words(0, @video.duration) %></li>
+		</ul>
+		<p> 
+			<%= @video.description %>
+		</p>
+	</div>
+	<div class="clear"></div>
+</div>
 
 <%= link_to 'Edit', edit_admin_video_path(@video) %> |
 <%= link_to 'Back', admin_videos_path %>

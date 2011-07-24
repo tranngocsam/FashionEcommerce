@@ -1,5 +1,7 @@
 Ecommerce::Application.routes.draw do
 	match "home/index" => "home#index", :as => :homepage
+	match "videos/index" => "videos#index", :as => :videos
+	match "videos/:id" => "videos#show", :as => :video
 
 	namespace :admin do
 		resources :videos

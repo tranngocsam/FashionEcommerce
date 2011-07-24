@@ -7,6 +7,7 @@ class CreateVideos < ActiveRecord::Migration
 			t.datetime :movie_updated_at
       t.string :movie_file_name
       t.integer :movie_file_size
+			t.integer :duration
 
       t.timestamps
     end

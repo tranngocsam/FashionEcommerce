@@ -1,27 +1,62 @@
-<h1>Listing videos</h1>
+<% host_url = "http://" + request.host_with_port%>
+<div class="videos-page">
+	<% if @latest_video %>
+		<div class="latest-video">
+			<div class="video-big-thumbnail fl">
+				<object width="515" height="270"> 
+					<param name="movie" value="/javascripts/StrobeMediaPlayback/StrobeMediaPlayback.swf"></param>
+					<param name="flashvars" value="src=<%= CGI.escape(host_url + @latest_video.movie.url) + "&poster=" + CGI.escape(host_url + @latest_video.movie.url(:large)) %>"></param>
+					<param name="allowFullScreen" value="true"></param>
+					<param name="allowscriptaccess" value="always"></param>
+					<embed src="/javascripts/StrobeMediaPlayback/StrobeMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="515" height="270" flashvars="src=<%= CGI.escape(host_url + @latest_video.movie.url) %>"></embed>
+				</object>
+			</div>
+			<div class="video-details fl">
+				<h3>Here shell be the name of the video<!--%= @latest_video.name %--></h3>
+				<ul>
+					<li><%= @latest_video.created_at.strftime("%d %B %Y %I:%M %p") %></li>
+					<li class="last">Durations: 04:45min<!--%= distance_of_time_in_words(0, @latest_video.duration) %--></li>
+				</ul>
+				<p>
+					Mot ngay nhu moi ngay, em tra lai doi toi, mot ngay nhu moi ngay, quanh doi minh chot toi, mot ngay nhu moi ngay, di ve mot minh toi, nhung song troi am tham, dam rong reu xep hang,...
+					<!--%= @latest_video.description %-->
+				</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+	<% end %>
+	<div class="videos">
+		<%
+			if @videos && !@videos.empty?
+		%>
+			<h3>Also here are (or will be) other videos:</h3>
+		<%
+			end
+		%>
+		<% @videos.each do |video| %>
+			<div class="video fl">
+				<div class="video-thumbnail">
+					<object width="195" height="110"> 
+						<param name="movie" value="/javascripts/StrobeMediaPlayback/StrobeMediaPlayback.swf"></param>
+						<param name="flashvars" value="src=<%= CGI.escape(host_url + video.movie.url) %>"></param>
+						<param name="allowFullScreen" value="true"></param>
+						<param name="allowscriptaccess" value="always"></param>
+						<embed src="/javascripts/StrobeMediaPlayback/StrobeMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="195" height="110" flashvars="src=<%= CGI.escape(host_url + video.movie.url) %>"></embed>
+					</object>
+				</div>
+				<div class="video-details">
+					<h4>Mot ngay nhu moi ngay<!--%= video.name %--></h4>
+					<p>
+						Mot ngay nhu moi ngay, di ve mot minh toi, mot ngay nhu moi ngay, quanh doi minh chot toi, mot ngay nhu moi ngay, di ve mot minh toi,...
+						<!--%= video.description %-->
+					</p>
+				</div>
+				<ul>
+					<li><%= @latest_video.created_at.strftime("%d %B %Y %I %M %P") %></li>
+				</ul>
+			</div>
+		<% end %>
+		<div class="clear"></div>
+	</div>
+</div>
 
-<table>
-  <tr>
-    <th>Video content type</th>
-    <th>Video file name</th>
-    <th>Video file size</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @videos.each do |video| %>
-  <tr>
-    <td><%= video.video_content_type %></td>
-    <td><%= video.video_file_name %></td>
-    <td><%= video.video_file_size %></td>
-    <td><%= link_to 'Show', video %></td>
-    <td><%= link_to 'Edit', edit_video_path(video) %></td>
-    <td><%= link_to 'Destroy', video, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Video', new_video_path %>

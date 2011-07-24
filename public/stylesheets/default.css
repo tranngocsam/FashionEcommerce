@@ -82,8 +82,8 @@ ul.dropdown {
 	/* -- level mark -- */
 
 	ul.dropdown ul {
-	 width: 150px;
-	 margin-top: 1px;
+	 width: 137px;
+	 margin-top: 0;
 	}
 
 		ul.dropdown ul li {
