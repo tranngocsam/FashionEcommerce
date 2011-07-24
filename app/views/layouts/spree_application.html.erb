@@ -20,7 +20,7 @@ end
     <div class="container">
     <div id="login-bar">
       <ul id="nav" class="dropdown dropdown-horizontal">
-        <%= render 'shared/nav_bar' %>
+        <%= render :partial => 'shared/nav_bar', :locals => {:hide => {:sizing_chart => true, :product_care => true, :store_locator => true, :about => true}} %>
       </ul>
     </div>
   <!--%= logo %-->
@@ -28,6 +28,12 @@ end
   </div>
 	<div id="minor_nav">
 		<!--%= render "shared/minor_nav" %-->
+		<% if @show_minor_nav %>
+			<ul class="dropdown dropdown-horizontal">
+				<%= render :partial => "shared/nav_bar", :locals => {:hide => {:home => true, :videos => true, :wholesales => true}} %>
+			</ul>
+			<div class="clear"></div>
+		<% end %>
 	</div>
   <div id="wrapper" class="container">
 		<!--
@@ -50,8 +56,9 @@ end
       <% end %>
       <%= yield %>
     </div>
-    <%= render :partial => 'shared/footer'%>
+    <!--%= render :partial => 'shared/footer'%-->
   </div>
+	<%= render :partial => 'shared/footer'%>
 </div>
 </body>
 </html>

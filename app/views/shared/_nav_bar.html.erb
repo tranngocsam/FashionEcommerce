@@ -1,4 +1,6 @@
-	<li class="dir">Collections
+	<% if !defined?(hide) || !hide[:home] %><li class="first"><a href="/">Home</a></li><% end %>
+	<% if !defined?(hide) || !hide[:collections] %>
+	<li class="dir <%= defined?(hide) && hide[:home] ? "first" : "" %>"><a href="/products">Collections</a>
 		<ul>
 			<% get_taxonomies.each do |taxonomy| %>
 				<li class="root"><%= taxonomy.name %></li>
@@ -10,9 +12,12 @@
 			 <% end %>
 		 </ul>
 	</li>
-	<li><a href="#">Sizing Chart</a></li>
-	<li><a href="#">Product Care</a></li>
-	<li><a href="#">Store Locator</a></li>
-	<li><a href="#">About</a></li>
-	<li class="last"><a href="#">Contact</a></li>
+	<% end %>
+	<% if !defined?(hide) || !hide[:videos] %><li><a href="/videos/index">Videos</a></li><% end %>
+	<% if !defined?(hide) || !hide[:wholesales] %><li><a href="/products">Wholesales</a></li><% end %>
+	<% if !defined?(hide) || !hide[:sizing_chart] %><li><a href="#">Sizing Chart</a></li><% end %>
+	<% if !defined?(hide) || !hide[:product_care] %><li><a href="#">Product Care</a></li><% end %>
+	<% if !defined?(hide) || !hide[:store_locator] %><li><a href="#">Store Locator</a></li><% end %>
+	<% if !defined?(hide) || !hide[:about] %><li><a href="#">About</a></li><% end %>
+	<% if !defined?(hide) || !hide[:contact] %><li class="last"><a href="#">Contact</a></li><% end %>
 

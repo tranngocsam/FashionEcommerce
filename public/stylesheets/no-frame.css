@@ -34,19 +34,26 @@ a {
 #nav ul {
   list-style: none;
   font-size: 22px;
-  text-align: center;
 	color: #22C1E1;
+	margin-right: 130px;
 }
 
 #nav li {
-	display: inline;
 	margin: 0;
 	padding: 0 15px 0 8px;
-	border-right: 2px solid #22C1E1;
+	border-left: 2px solid #22C1E1;
 }
 
-#nav li.last {
-	border-right: none;
+#nav ul li ul {
+	width: 100%;
+}
+
+#nav ul li ul li {
+	border: none;
+}
+
+#nav li.first {
+	border-left: none;
 }
 
 #nav li a {
@@ -54,7 +61,10 @@ a {
 }
 
 #copyright {
-	margin-top: 200px;
+	clear: both;
+	margin-top: 240px;
 	text-align: right;
 	padding-right: 50px;
+	font-size: 0.9em;
+	color: #989898;
 }

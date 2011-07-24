@@ -21,7 +21,7 @@
 
 	  <%= hook :signup do %>
 
-	  	<%= form_for(:user, :url => registration_path(@user || User.new)) do |f| %>
+	  	<%= form_for(:user, :url => registration_path(@user || User.new), :html => {:id => "user_form"}) do |f| %>
 
 	  		<%= hook :signup_inside_form do %>
 			  	<%= render 'shared/user_form', :f => f %>
