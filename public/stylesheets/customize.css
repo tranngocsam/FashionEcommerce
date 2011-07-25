@@ -1,3 +1,47 @@
+@font-face {
+	font-family: 'ChampagneLimousinesItalic';
+	src: url('/stylesheets/fonts/champagne__limousines_italic-webfont.eot');
+	src: url('/stylesheets/fonts/champagne__limousines_italic-webfont.eot?#iefix') format('embedded-opentype'),
+			 url('/stylesheets/fonts/champagne__limousines_italic-webfont.woff') format('woff'),
+			 url('/stylesheets/fonts/champagne__limousines_italic-webfont.ttf') format('truetype'),
+			 url('/stylesheets/fonts/champagne__limousines_italic-webfont.svg#ChampagneLimousinesItalic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ChampagneLimousinesBoldItalic';
+	src: url('/stylesheets/fonts/champagne__limousines_bold_italic-webfont.eot');
+	src: url('/stylesheets/fonts/champagne__limousines_bold_italic-webfont.eot?#iefix') format('embedded-opentype'),
+			 url('/stylesheets/fonts/champagne__limousines_bold_italic-webfont.woff') format('woff'),
+			 url('/stylesheets/fonts/champagne__limousines_bold_italic-webfont.ttf') format('truetype'),
+			 url('/stylesheets/fonts/champagne__limousines_bold_italic-webfont.svg#ChampagneLimousinesBoldItalic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ChampagneLimousinesBold';
+	src: url('/stylesheets/fonts/champagne__limousines_bold-webfont.eot');
+	src: url('/stylesheets/fonts/champagne__limousines_bold-webfont.eot?#iefix') format('embedded-opentype'),
+			 url('/stylesheets/fonts/champagne__limousines_bold-webfont.woff') format('woff'),
+			 url('/stylesheets/fonts/champagne__limousines_bold-webfont.ttf') format('truetype'),
+			 url('/stylesheets/fonts/champagne__limousines_bold-webfont.svg#ChampagneLimousinesBold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ChampagneLimousinesRegular';
+	src: url('/stylesheets/fonts/champagne__limousines-webfont.eot');
+	src: url('/stylesheets/fonts/champagne__limousines-webfont.eot?#iefix') format('embedded-opentype'),
+			 url('/stylesheets/fonts/champagne__limousines-webfont.woff') format('woff'),
+			 url('/stylesheets/fonts/champagne__limousines-webfont.ttf') format('truetype'),
+			 url('/stylesheets/fonts/champagne__limousines-webfont.svg#ChampagneLimousinesRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 .fl {
 	width: auto;
 	float: left; 
@@ -16,7 +60,7 @@ body {
 	background: #C0C0C0;
 	margin: 0;
 	padding: 0;
-	font-family: Champagne, regular;
+	font-family: "ChampagneLimousinesRegular";
 	font-size: 0.8em;
 }
 
@@ -44,11 +88,16 @@ body {
 
 #wrapper {
 	background: url("/images/wrapper_bg_top.png") no-repeat center top;
-	padding: 45px 40px 20px;
+	padding: 45px 35px 20px;
 }
 
 .label {
 	width: 90px; 
+}
+
+.label label {
+	font-size: 1.4em;
+	font-weight: normal;
 }
 
 .form-input {
@@ -58,7 +107,7 @@ body {
 .input-control input {
 	background: url("/images/input_border.png") no-repeat;
 	height: 22px;
-	width: 224px;
+	width: 204px;
 	border: none;
 	padding: 0 10px;
 }
@@ -89,7 +138,6 @@ body {
 
 .submit {
 	text-align: right;
-	margin-right: 20px;
 }
 
 .product-listing {

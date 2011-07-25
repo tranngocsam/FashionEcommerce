@@ -1,6 +1,7 @@
 class TaxonsController < Spree::BaseController
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
   helper :products
+	before_filter :authenticate_user!
 
   respond_to :html
 

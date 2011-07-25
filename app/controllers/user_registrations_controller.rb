@@ -14,6 +14,7 @@ class UserRegistrationsController < Devise::RegistrationsController
 
   # POST /resource/sign_up
   def create
+		puts "Line 17 user registrations controller ------------------------"
     @user = build_resource(params[:user])
     logger.debug(@user)
     if resource.save
