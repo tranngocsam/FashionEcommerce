@@ -1,16 +1,18 @@
 	<% if !defined?(hide) || !hide[:home] %><li class="first"><a href="/">Home</a></li><% end %>
 	<% if !defined?(hide) || !hide[:collections] %>
-	<li class="dir <%= defined?(hide) && hide[:home] ? "first" : "" %>"><a href="/products">Collections</a>
-		<ul>
-			<% get_taxonomies.each do |taxonomy| %>
-				<li class="root"><%= taxonomy.name %></li>
-				<% taxonomy.root.children.each do |taxon| %>
-					<li>
-						<%= link_to taxon.name, seo_url(taxon) %>
-					</li>
-				<% end %>
-			 <% end %>
-		 </ul>
+	<li class="dir <%= defined?(hide) && hide[:home] ? "first" : "" %>"><%= link_to("Collections", collections_path) %>
+		<% if !defined?(hide) || !hide[:sub_collections] %>
+			<ul>
+				<% get_taxonomies.each do |taxonomy| %>
+					<!--li class="root"><%= taxonomy.name %></li-->
+					<% taxonomy.root.children.each do |taxon| %>
+						<li>
+							<%= link_to taxon.name + " " + taxonomy.name, seo_url(taxon) %>
+						</li>
+					<% end %>
+				 <% end %>
+			 </ul>
+		 <% end %>
 	</li>
 	<% end %>
 	<% if !defined?(hide) || !hide[:videos] %><li><a href="/videos/index">Videos</a></li><% end %>

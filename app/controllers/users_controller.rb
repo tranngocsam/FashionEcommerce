@@ -7,7 +7,6 @@ class UsersController < Spree::BaseController
   end
 
   def create
-		puts "Line 10 users controller -------------------------------"
     @user = User.new(params[:user])
     if @user.save
 

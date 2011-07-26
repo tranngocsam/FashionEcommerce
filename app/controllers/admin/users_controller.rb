@@ -13,6 +13,18 @@ class Admin::UsersController < Admin::ResourceController
     end
   end
 
+	def disapprove
+		user = User.find(params[:id])
+		user.disapprove
+		render :text => "User hash been successfully disapproved!"
+	end
+
+	def approve 
+		user = User.find(params[:id])
+		user.approve
+		render :text => "User hash been successfully approved!"
+	end
+
   protected
 
   def collection

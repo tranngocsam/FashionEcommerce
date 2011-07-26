@@ -9,7 +9,3 @@ module Devise
     end
 	end
 end
-
-Devise.setup do |config|
-	config.confirm_within = 0
-end

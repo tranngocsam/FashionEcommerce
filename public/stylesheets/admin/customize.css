@@ -1,3 +1,17 @@
 #header h1 {
 	margin: 0 auto auto 100px;
 }
+
+.approve {
+	padding-left: 15px;
+	background: url("/images/admin/approve.png") no-repeat;
+}
+
+.disapprove {
+	padding-left: 15px;
+	background: url("/images/admin/disapprove.png") no-repeat;
+}
+
+.hidden {
+	display: none;
+}

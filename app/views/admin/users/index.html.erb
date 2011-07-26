@@ -31,8 +31,17 @@
         <% end %>
         <td>
           <%= hook :admin_users_index_row_actions, locals do %>
-            <%= link_to_edit user, :class => "edit" %> &nbsp;
-            <%= link_to_delete user %>
+						<span><%= link_to_edit user, :class => "edit" %> &nbsp;</span>
+            <span><%= link_to_delete user %></span>
+						<span>
+							<% if user.approved? %>
+								<%= link_to("approve", admin_approve_path(user), :class => "approve hidden") %>
+								<%= link_to("disapprove", admin_disapprove_path(user), :class => "disapprove") %>
+							<% else %>
+								<%= link_to("approve", admin_approve_path(user), :class => "approve") %>
+								<%= link_to("disapprove", admin_disapprove_path(user), :class => "disapprove hidden") %>
+							<% end %>
+						</span>
           <% end %>
         </td>
       </tr>
@@ -42,6 +51,41 @@
 
 <%= will_paginate(:previous_label => "&#171; #{t('previous')}", :next_label => "#{t('next')} &#187;") %>
 
+<script type="text/javascript">
+	$(".approve").live("click", function(event) {
+		event.preventDefault();
+		var me = this;
+		$.post($(this).attr("href"), function(data) {
+			$(me).hide();
+			$(me).parent().find(".disapprove").show();
+			updateNotice(data);
+		});
+	});
+
+	$(".disapprove").live("click", function(event) {
+    event.preventDefault();
+    var me = this;
+    $.post($(this).attr("href"), function(data) {
+      $(me).hide();
+      $(me).parent().find(".approve").show();
+			updateNotice(data);
+    });
+  });
+
+	function updateNotice(text) {
+		notice_div = $('.flash.notice');
+	  if (notice_div.length > 0) {
+	    notice_div.html(text);
+	    notice_div.show();
+	  } else {
+	    if ($("#content .toolbar").length > 0) {
+			  $("#content .toolbar").before('<div class="flash notice">' + text + '</div>');
+			} else {
+			  $("#content h1").before('<div class="flash notice">' + text + '</div>');
+			}
+		} 
+	}
+</script>
 
 <% content_for :sidebar do %>
   <div class="box">

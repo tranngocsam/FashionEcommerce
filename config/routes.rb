@@ -1,9 +1,13 @@
 Ecommerce::Application.routes.draw do
 	match "home/index" => "home#index", :as => :homepage
+	match "home/collections" => "home#collections", :as => :collections
+	match "home/flash-xml" => "home#flash_xml", :as => :flash_xml
 	match "videos/index" => "videos#index", :as => :videos
 	match "videos/:id" => "videos#show", :as => :video
 
 	namespace :admin do
+		match "user/disapprove/:id" => "users#disapprove", :conditions => {:method => :post}, :as => :disapprove
+		match "user/approve/:id" => "users#approve", :conditions => {:method => :post}, :as => :approve
 		resources :videos
 	end
 

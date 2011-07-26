@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :confirmable,
+  devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, 
          :rememberable, :trackable, :validatable, :encryptable, :encryptor => "authlogic_sha512"
 
   has_many :orders
@@ -43,6 +43,16 @@ class User < ActiveRecord::Base
     UserMailer.password_reset_instructions(self).deliver
   end
 
+	def disapprove 
+	  self.approved = false 
+		save
+	end 
+
+	def approve 
+	  self.approved = true 
+		save
+  end
+
   protected
   #def password_required?
   #  !persisted? || password.present? || password_confirmation.present?
@@ -82,27 +92,18 @@ class User < ActiveRecord::Base
     Thread.current[:user] = user
   end
 	
-	def confirmation_required?
-		false
-	end
-
-	def active_for_authentication?
-		confirmed? || confirmation_period_valid?
-	end
+	#def active_for_authentication?		
+	#end
 
 	def password_required?
 		false
 	end
 
-  #def active_for_authentication? 
-	#  super && approved? 
-	#end 
+  def active_for_authentication?
+	  super && approved?
+	end 
 
-	#def inactive_message 
-	#  if !approved? 
-	#    :not_approved 
-	#  else 
-	#    super # Use whatever other message 
-	#  end 
-	#end
+	def inactive_message 
+	  approved? ? super : "Your account has not been approved" 
+	end
 end
