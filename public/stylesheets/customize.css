@@ -337,3 +337,8 @@ dl.table-display dd span {
 #minor_nav ul li a {
 	color: #111111 !important;
 }
+
+.map_canvas {
+	width: 650px;
+	height: 360px;
+}
