@@ -14,12 +14,12 @@ class UserRegistrationsController < Devise::RegistrationsController
 
   # POST /resource/sign_up
   def create
-		logger.debug "Line 17 user registrations controller ------------------------"
     @user = build_resource(params[:user])
     logger.debug(@user)
     if resource.save
       set_flash_message(:notice, :signed_up)
-      sign_in_and_redirect(:user, @user)
+      #sign_in_and_redirect(:user, @user)
+			redirect_to root_path
     else
       clean_up_passwords(resource)
 			flash[:notice] = flash[:notice].to_a.concat resource.errors.full_messages

@@ -16,12 +16,28 @@ class Admin::UsersController < Admin::ResourceController
 	def disapprove
 		user = User.find(params[:id])
 		user.disapprove
+		UserMailer.disapprove(user).deliver
 		render :text => "User hash been successfully disapproved!"
 	end
 
 	def approve 
 		user = User.find(params[:id])
+		password = nil
+
+		if user.password.blank?
+			password = generate_password(user)
+			user.password = password
+			user.password_confirmation = user.password
+		end
+
 		user.approve
+
+		if password.nil?
+			UserMailer.approve(user).deliver
+		else 
+			UserMailer.welcome(user, password).deliver
+		end
+
 		render :text => "User hash been successfully approved!"
 	end
 
@@ -73,5 +89,9 @@ class Admin::UsersController < Admin::ResourceController
   def load_roles
     @roles = Role.all
   end
+
+	def generate_password(user)
+		Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{user.name}--")[0, 8]
+	end
 
 end
