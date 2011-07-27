@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Dear <%= @user.name %></h1>
+		<% host_url = "http://" + request.host_with_port %>
+    <p>
+			Thank you for registration. please use this email and <%= @password %> to login to our shop at <%= host_url + login_path %>.<br />
+			Please contact us if you have any problems.
+    </p>
+    <p>Sincerely</p>
+  </body>
+</html>
