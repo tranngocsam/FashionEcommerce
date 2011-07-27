@@ -1,5 +1,6 @@
 en:
   to_apply: "To apply"
+  videos: "videos"
   devise:
     failure:
       not_approved: "Your account has not been approved by your administrator yet."
