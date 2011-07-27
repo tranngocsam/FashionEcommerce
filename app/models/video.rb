@@ -4,9 +4,9 @@ class Video < ActiveRecord::Base
 	has_attached_file :movie, 
 										:styles => { :small    => '195x195#',
                                  :medium   => '365x365#',
-                                 :large    => '515x515#' },
-										:url => '/:class/:id/:style.:content_type_extension',
-                    :path => ':rails_root/public/movies/:id/:style.:content_type_extension',
+                                 :large    => '515x270#' },
+										:url => '/system/movies/:id/:style.:content_type_extension',
+                    :path => ':rails_root/public/system/movies/:id/:style.:content_type_extension',
 										:processors => lambda{ |a| a.video? ? [:video_thumbnail] : [:thumbnail] }
 
 	validates_attachment_presence :movie
@@ -62,6 +62,6 @@ class Video < ActiveRecord::Base
 	end
 
 	def set_duration
-		self.duration = Utils.get_video_file_duration(self.movie.path)
+		self.duration = Utils.get_video_file_duration(File.path(self.movie.to_file(:original)))
 	end
 end
