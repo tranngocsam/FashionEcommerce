@@ -15,7 +15,7 @@
 		<h3><%= @video.name %></h3>
 		<ul>
 			<li><%= @video.created_at.strftime("%d %B %Y %I:%M %p") %></li>
-			<li class="last">Durations: <%= distance_of_time_in_words(0, @video.duration) %></li>
+			<li class="last">Durations: <%= distance_of_time_in_words(0, @video.duration || 0) %></li>
 		</ul>
 		<p> 
 			<%= @video.description %>

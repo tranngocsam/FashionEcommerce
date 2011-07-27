@@ -15,7 +15,7 @@
 				<h3><%= @latest_video.name %></h3>
 				<ul>
 					<li><%= @latest_video.created_at.strftime("%d %B %Y %I:%M %p") %></li>
-					<li class="last">Durations: <%= distance_of_time_in_words(0, @latest_video.duration) %></li>
+					<li class="last">Durations: <%= distance_of_time_in_words(0, @latest_video.duration || 0) %></li>
 				</ul>
 				<p>
 					Mot ngay nhu moi ngay, em tra lai doi toi, mot ngay nhu moi ngay, quanh doi minh chot toi, mot ngay nhu moi ngay, di ve mot minh toi, nhung song troi am tham, dam rong reu xep hang,...
@@ -49,7 +49,7 @@
 					<h3><%= video.name %></h3>
 					<ul>
 						<li><%= video.created_at.strftime("%d %B %Y %I:%M %p") %></li>
-						 <li class="last">Durations: <%= distance_of_time_in_words(0, video.duration) %></li>`		
+						 <li class="last">Durations: <%= distance_of_time_in_words(0, video.duration || 0) %></li>`		
 					</ul>
 					<p>
 						Mot ngay nhu moi ngay, di ve mot minh toi, mot ngay nhu moi ngay, quanh doi minh chot toi, mot ngay nhu moi ngay, di ve mot minh toi,...
@@ -63,3 +63,6 @@
 	</div>
 </div>
 
+<%= will_paginate @videos %>
+
+<%= page_entries_info @videos %>

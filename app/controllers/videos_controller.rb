@@ -5,7 +5,13 @@ class VideosController < Spree::BaseController
   # GET /videos.xml
   def index
 		@latest_video = Video.find(:first, :order => "created_at DESC")
-    @videos = Video.find(:all, :conditions => ["id != #{@latest_video.id}"], :order => "created_at DESC")
+		options = {
+			:page => params[:page] || 1,
+			:per_page => 10,
+			:order    => params[:sort].blank? ? "created_at DESC" : params[:sort]
+		}
+		options[:conditions] = ["id != #{@latest_video.id}"]
+    @videos = Video.paginate(options)
 
     respond_to do |format|
       format.html # index.html.erb
