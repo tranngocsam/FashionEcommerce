@@ -1,5 +1,5 @@
 	<% if !defined?(hide) || !hide[:home] %><li class="first"><a href="/">Home</a></li><% end %>
-	<% if !defined?(hide) || !hide[:collections] %>
+	<% if false && (!defined?(hide) || !hide[:collections]) %>
 	<li class="dir <%= defined?(hide) && hide[:home] ? "first" : "" %>"><%= link_to("Collections", collections_path) %>
 		<% if !defined?(hide) || !hide[:sub_collections] %>
 			<ul>
