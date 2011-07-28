@@ -15,7 +15,7 @@
 		 <% end %>
 	</li>
 	<% end %>
-	<% if !defined?(hide) || !hide[:videos] %><li><a href="/videos/index">Videos</a></li><% end %>
+	<% if !defined?(hide) || !hide[:videos] %><li class=" <%= defined?(hide) && hide[:home] ? "first" : "" %>"><a href="/videos/index">Videos</a></li><% end %>
 	<% if !defined?(hide) || !hide[:wholesales] %><li><a href="/products">Wholesales</a></li><% end %>
 	<% if !defined?(hide) || !hide[:sizing_chart] %><li><a href="#">Sizing Chart</a></li><% end %>
 	<% if !defined?(hide) || !hide[:product_care] %><li><a href="#">Product Care</a></li><% end %>
