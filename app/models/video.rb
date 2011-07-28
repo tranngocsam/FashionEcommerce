@@ -62,6 +62,6 @@ class Video < ActiveRecord::Base
 	end
 
 	def set_duration
-		self.duration = Utils.get_video_file_duration(File.path(self.movie.to_file(:original)))
+		self.duration = Utils.get_video_file_duration(self.movie.to_file(:original).path)
 	end
 end
