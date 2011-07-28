@@ -1,4 +1,9 @@
-<%= form_for(@video, :url => admin_videos_path, :html => {:multipart => true}) do |f| %>
+<%
+	if !defined?(method)
+		method = "post"
+	end
+%>
+<%= form_for(@video, :html => {:multipart => true}) do |f| %>
   <% if @video.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
