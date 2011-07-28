@@ -18,7 +18,7 @@ development:
 
 production:
   adapter: mysql2
-  database: spiritofphonixsilk
+  database: spiritofphoenixsilkcom
   username: spiritofphoenixs
   password: 6Furtu5f
   host: mysql.spiritofphoenixsilk.com

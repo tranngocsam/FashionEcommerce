@@ -60,7 +60,7 @@ class Admin::VideosController < Admin::ResourceController
 
     respond_to do |format|
       if @video.update_attributes(params[:video])
-        format.html { redirect_to(admin_videos_path(@video), :notice => 'Video was successfully updated.') }
+        format.html { redirect_to(admin_video_path(@video), :notice => 'Video was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
